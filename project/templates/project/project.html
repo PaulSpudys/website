@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+
+{% load static %}
+{%block content%}
+
+
+
+<main class="projects">
+    
+    <!-- Search Result: DevList -->
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+         {% for project in projects%}
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'project' project.id%}" class="project">
+                <img class="project__thumbnail" src='{{project.imageURL}}' alt="project thumbnail" />
+                <div class="card__body">
+                  <h3 class="project__title">{{project.title}}</h3>
+                  <p><a class="project__author" href="">By Paulius Spudys</a></p>
+                 
+                  <div class="project__tags">
+                    {% for tag in project.tags.all%}
+                    <span class="tag tag--pill tag--main">
+                      <small>{{tag.name}}</small>
+                    </span>
+                    {% endfor %}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {% endfor %}
+
+          
+
+          
+      
+
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+{%endblock content%}
